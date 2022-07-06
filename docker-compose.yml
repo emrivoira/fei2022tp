@@ -21,5 +21,6 @@ services:
       DATABASE_NAME: ${DB_NAME}
       DATABASE_USER: ${DB_USER}
       DATABASE_PASS: ${DB_PASSWORD}
+      PRODUCCION: ${PRODUCCION}
     ports:
       - '8000:80'
