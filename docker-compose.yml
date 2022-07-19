@@ -22,5 +22,6 @@ services:
       DATABASE_USER: ${DB_USER}
       DATABASE_PASS: ${DB_PASSWORD}
       PRODUCCION: ${PRODUCCION}
+      PHP_USER_ID: ${PHP_USER_ID}
     ports:
       - '8000:80'
