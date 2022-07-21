@@ -15,6 +15,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'U370gX9q88_KV8hrfOoY0rArlb4R_2aZ',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser'
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -50,6 +53,11 @@ $config = [
             'rules' => [],
         ],
 
+    ],
+    'modules' => [
+        'apiv1' => [
+            'class' => 'app\modules\apiv1\Apiv1Module',
+        ],
     ],
     'params' => $params,
 ];
