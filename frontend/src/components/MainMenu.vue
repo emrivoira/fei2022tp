@@ -47,8 +47,8 @@
         name: 'MainMenu',
         data: () => ({
           items:[
-          {title:'Home', icon: 'mdi-view-dashboard'},
-          {title:'About', icon: 'mdi-view-dashboard'}
+          {title:'Home', icon: 'mdi-view-dashboard', to: '/'},
+          {title:'About', icon: 'mdi-view-dashboard', to: '/about'}
             
           ],
         }),
