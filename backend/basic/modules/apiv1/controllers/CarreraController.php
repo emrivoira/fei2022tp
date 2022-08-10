@@ -2,11 +2,11 @@
 
 namespace app\modules\apiv1\controllers;
 
-use yii\rest\ActiveController;
+use app\modules\apiv1\controllers\BaseController;
 
 
 
-class CarreraController extends ActiveController
+class CarreraController extends BaseController
 {
     public $modelClass = 'app\modules\apiv1\models\Carrera';
 }
