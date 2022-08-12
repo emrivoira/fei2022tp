@@ -19,8 +19,9 @@ class BaseController extends ActiveController
         $behaviors = parent::behaviors();
 
         return array_merge($behaviors, [
-            'corsFiter' => [
-                'class' => [
+            'corsFilter' => [
+                'class' => Cors::class,
+                'cors' => [
                     'Origin'                            => static::allowedDomains(),
                     'Access-Control-Request-Methods'    => ['POST', 'GET', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
                     'Access-Control-Allow-Credentials'  => true,
