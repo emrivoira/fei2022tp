@@ -1,8 +1,26 @@
 <template>
    <v-container>
+
+          <v-app-bar
+            app
+            elevation="4"
+            >
+            <v-app-bar-nav-icon @click="mostrarMenu=!mostrarMenu"></v-app-bar-nav-icon>
+            <v-app-bar-title>Reserva de Aulas - CURZA</v-app-bar-title>
+            <v-spacer></v-spacer>
+            <v-btn small text fab>
+                <v-icon>mdi-cog-outline</v-icon>
+            </v-btn>
+            <v-btn small @click="logout">
+                <v-icon>mdi-exit-to-app</v-icon>
+            </v-btn>
+
+        </v-app-bar>
+
         <v-navigation-drawer
             app
-            permanent
+            v-model="mostrarMenu"
+            temporary
         >
             <v-list-item>
                 <v-img
@@ -46,11 +64,15 @@
     export default {
         name: 'MainMenu',
         data: () => ({
+          mostrarMenu: false,
           items:[
           {title:'Home', icon: 'mdi-view-dashboard', to: '/'},
           {title:'About', icon: 'mdi-information-outline', to: '/about'}
             
           ],
+           logout(){
+                console.log('Desconectado...')
+            },
         }),
         mounted() {
             
@@ -58,6 +80,7 @@
         computed: {
             
         },
+        
     }
 
 </script>

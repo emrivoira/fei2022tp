@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 // Importamos los componentes a utilizar en las rutas
 import PageHome from '@/components/PageHome'
 import PageAbout from '@/components/PageAbout'
+import PageNotFound from '@/components/PageNotFound'
 
 //Indicamos que vue va a utilizar la libreria/plugins vue-router
 Vue.use(VueRouter)
@@ -23,7 +24,7 @@ const routes = [
         En el Component llamamos al comoponente que 
         mostraremos en esa ruta.
     */
-
+    {path: '*', name: 'PageNotFound', component: PageNotFound },
     {path: '/', name: 'PageHome', component: PageHome  },
     {path: '/about', name: 'PageAbout', component: PageAbout },
 ]

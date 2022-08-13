@@ -1,7 +1,10 @@
 <template>
   <v-app>
+    /**
+    * Se elimo el  componente MainBar. Considero que se puede resolver en un solo componente.
+    * Incluso seria lo mas optimo por que se trata de funcionalidades que vand e la mano.
+    */
     <main-menu></main-menu>
-    <main-bar></main-bar>
      <v-main>
       <v-container fluid>
           <router-view/>
@@ -12,14 +15,13 @@
 
 <script>
 import MainMenu from './components/MainMenu.vue';
-import MainBar from './components/MainBar.vue';
+
 
 export default {
   name: 'App',
 
   components: {
-    MainMenu,
-    MainBar
+    MainMenu
    
   },
 
