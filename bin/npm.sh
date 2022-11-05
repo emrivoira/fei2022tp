@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose exec frontend npm $@
+docker compose exec frontend npm $@
