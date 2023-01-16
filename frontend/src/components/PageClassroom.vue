@@ -18,13 +18,14 @@
       <template v-slot:top>
         <v-toolbar
           flat
+          class="pb-3 primary"
         >
           <v-app-bar-nav-icon>
-            <v-icon>mdi-google-classroom</v-icon>
+            <v-icon color="white">mdi-google-classroom</v-icon>
           </v-app-bar-nav-icon>
-          <v-toolbar-title>Gestionar Aulas</v-toolbar-title>
+          <v-toolbar-title color="white--text">Gestionar Aulas</v-toolbar-title>
           <v-divider
-            class="mx-4"
+            class="mx-4 white"
             inset
             vertical
           ></v-divider>
@@ -140,7 +141,7 @@
                  mdi-alert
                 </v-icon>
               </v-card-title>
-              <v-card-text class="text-h5 text-center" >{{ deleteItemConfirmTitle() }}</v-card-text>
+              <v-card-text class="text-h5 text-center" >¿Esta seguro de borra el aula llamada: {{ getDescripción }} ?</v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="error" text @click="closeDelete">Cancelar</v-btn>
@@ -243,6 +244,9 @@ export default {
     formTitle() {
       return this.editedIndex === -1 ? "Nueva Aula" : "Editar Aula";
     },
+    getDescripción(){
+      return this.editedItem.descripcion;
+    }
   },
 
   watch: {
@@ -299,7 +303,7 @@ export default {
     deleteItemConfirm() {
       console.log('Confirmar delete (item)', this.editedItem.id);
       this.classroom.splice(this.editedIndex, 1);
-      this.deleteItemConfirmTitle();
+      //this.deleteItemConfirmTitle();
       this.deleteClassroom();
       this.closeDelete();
     },
@@ -333,7 +337,7 @@ export default {
       this.editedItem.es_climatizada = valor;
     },
 
-    // Se crean metodos para guardar, actualizar y borrar registros.
+    
 
     shootAlert(method){
       switch (method) {
@@ -368,11 +372,11 @@ export default {
       }
       this.close();
     },
-
-        deleteItemConfirmTitle(){
+    /*
+    deleteItemConfirmTitle(){
       return "¿Esta seguro de borra el aula llamada: '" + this.editedItem.descripcion + "' ?";
     },
-    
+    */
     cangedColorHeated (es_climatizada){
      
       if (es_climatizada === false) {
@@ -382,7 +386,7 @@ export default {
       }
 
     },
-
+    // Se crean metodos para guardar, actualizar y borrar registros.
   
     async saveClassroom() {
       await this.axios
