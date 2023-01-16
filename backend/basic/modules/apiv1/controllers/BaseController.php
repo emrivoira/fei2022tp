@@ -8,13 +8,17 @@ use yii\filters\ContentNegotiator;
 use yii\filters\Cors;
 
 class BaseController extends ActiveController
-{
+{    
     public static function allowedDomains()
     {
-        return [$_SERVER["REMOTE_ADDR"], 'http://127.0.0.1:8000'];
+        return [$_SERVER["REMOTE_ADDR"], 
+        'http://localhost:8080', 
+        
+    ];
     }
 
-    function behaviors()
+   
+   function behaviors()
     {
         $behaviors = parent::behaviors();
 
@@ -23,7 +27,7 @@ class BaseController extends ActiveController
                 'class' => Cors::class,
                 'cors' => [
                     'Origin'                            => static::allowedDomains(),
-                    'Access-Control-Request-Methods'    => ['POST', 'GET', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+                    'Access-Control-Request-Method'    => ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
                     'Access-Control-Allow-Credentials'  => true,
                     'Access-Control-Max-Age'            => 3600,
                     'Access-Control-Allow-Headers'      => ['authorization', 'X-Requested-With', 'content-type'],
@@ -32,4 +36,5 @@ class BaseController extends ActiveController
             ],
         ]);
     }
+
 }

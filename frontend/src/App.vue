@@ -21,10 +21,7 @@ export default {
   },
   data: () => ({
     showMenu: true,
-    item: [
-      {title: 'Home', icon: 'mdi-view-deshboard'},
-      {title: 'About', icon: 'mdi-view-deshboard'}
-    ]
+    
   }),
 };
 </script>

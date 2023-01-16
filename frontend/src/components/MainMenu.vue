@@ -6,7 +6,9 @@
             elevation="4"
             >
             <v-app-bar-nav-icon @click="mostrarMenu=!mostrarMenu"></v-app-bar-nav-icon>
-            <v-app-bar-title>Reserva de Aulas - CURZA</v-app-bar-title>
+            <v-app-bar-title
+            color-text="white"
+            >Sistema de Reserva de Aulas CURZA</v-app-bar-title>
             <v-spacer></v-spacer>
             <v-btn small text fab>
                 <v-icon>mdi-cog-outline</v-icon>
@@ -33,7 +35,7 @@
                 ></v-img>
                 <v-list-item-content>
                     <v-list-item-title class="text-h6">
-                        Sis. de Reserva
+                        SiReC
                     </v-list-item-title>
                     <v-list-item-subtitle>
                         Proyecto Final
@@ -67,7 +69,9 @@
           mostrarMenu: false,
           items:[
           {title:'Home', icon: 'mdi-view-dashboard', to: '/'},
-          {title:'About', icon: 'mdi-information-outline', to: '/about'}
+          {title:'Gestión de Aulas', icon: 'mdi-google-classroom', to: '/aulas'},
+          {title:'Gestión de Carreras', icon: 'mdi-information-outline', to: '/carreras'},
+          {title:'About', icon: 'mdi-information-outline', to: '/about'},
             
           ],
            logout(){

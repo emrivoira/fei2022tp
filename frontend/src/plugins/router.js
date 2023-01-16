@@ -7,6 +7,8 @@ import VueRouter from 'vue-router'
 import PageHome from '@/components/PageHome'
 import PageAbout from '@/components/PageAbout'
 import PageNotFound from '@/components/PageNotFound'
+import PageClassroom from '@/components/PageClassroom'
+import PageCareer from "@/components/PageCareer"
 
 //Indicamos que vue va a utilizar la libreria/plugins vue-router
 Vue.use(VueRouter)
@@ -27,6 +29,8 @@ const routes = [
     {path: '*', name: 'PageNotFound', component: PageNotFound },
     {path: '/', name: 'PageHome', component: PageHome  },
     {path: '/about', name: 'PageAbout', component: PageAbout },
+    {path: '/aulas', name: 'PageClassroom', component: PageClassroom },
+    {path: '/carreras', name: 'PageCareer', component: PageCareer },
 ]
 
 // Se instancia el objeto vue-router
@@ -36,5 +40,5 @@ const router = new VueRouter({
         routes
 })
 
-// Se exporta la instancia
+// Se exporta
 export default router
