@@ -80,6 +80,7 @@
           {title:'Home', icon: 'mdi-view-dashboard', to: '/'},
           {title:'Gestión de Aulas', icon: 'mdi-google-classroom', to: '/aulas'},
           {title:'Gestión de Carreras', icon: 'mdi-school', to: '/carreras'},
+          {title:'Gestión de Profesores', icon: 'mdi-human-male-board', to: '/profesores'},
           {title:'About', icon: 'mdi-information-outline', to: '/about'},
             
           ],
