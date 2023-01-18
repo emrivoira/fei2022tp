@@ -10,6 +10,7 @@ import PageNotFound from '@/components/PageNotFound'
 import PageClassroom from '@/components/PageClassroom'
 import PageCareer from "@/components/PageCareer"
 import PageProfessor from "@/components/PageProfessor"
+import PageMatter from "@/components/PageMatter"
 
 //Indicamos que vue va a utilizar la libreria/plugins vue-router
 Vue.use(VueRouter)
@@ -32,6 +33,7 @@ const routes = [
     {path: '/about', name: 'PageAbout', component: PageAbout },
     {path: '/aulas', name: 'PageClassroom', component: PageClassroom },
     {path: '/profesores', name: 'PageProfessor', component: PageProfessor },
+    {path: '/materias', name:'PageMatter', component: PageMatter},
     {path: '/carreras', name: 'PageCareer', component: PageCareer },
 ]
 
