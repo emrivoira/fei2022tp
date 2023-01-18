@@ -3,12 +3,13 @@
     :headers="headers"
     :items="career"
     :items-per-page="10"
-    class="elevation-4"
+    class="elevation-1 mx-15"
+    :loading="loading"
   >
   <template v-slot:top>
         <v-toolbar
           flat
-          class="pb-3 primary"
+          class="pb-3 primary elevation-4"
         >
           <v-app-bar-nav-icon>
             <v-icon color="white">mdi-school</v-icon>
@@ -50,7 +51,7 @@
                     >
                       <v-text-field
                         v-model="editedItem.nombre"
-                        label="Descripción"
+                        label="Carrera"
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -193,8 +194,16 @@ import ComponentAlert from "./ComponentAlert.vue"
     
     methods:{
       async getCareer(){
-        await this.axios.get("apiv1/carrera").then((response)=>{
-           this.career = response.data; 
+        await this.axios.get("apiv1/carrera")
+          .then((response)=>{
+            this.career = response.data;
+            this.classroom = response.data;
+          setTimeout(()=> {
+            this.loading = false;
+          }, 1500); 
+        })
+        .catch((e) => {
+          this.errors = e; 
         })
       },
 
@@ -211,7 +220,8 @@ import ComponentAlert from "./ComponentAlert.vue"
       },
 
       deleteItemConfirm(){
-        this.career.splice(this.editedIndex, 1)
+        this.career.splice(this.editedIndex, 1);
+        this.deleteCareer(),
         this.closeDelete();
       },
 
@@ -231,17 +241,79 @@ import ComponentAlert from "./ComponentAlert.vue"
         });
       },
 
+      shootAlert(method){
+      switch (method) {
+        
+        case 'post':
+          this.typeAlert="success";
+          this.messageAlert="Se creo la carrera existosamente";
+          break;
+        case 'put':
+          this.typeAlert="success";
+          this.messageAlert="La edición la carrera fue existosa";
+          break;
+          case 'delete':
+          this.typeAlert="warning";
+          this.messageAlert="Se elimino la carrera de manera exitosa";
+          break;
+        default:
+          break;
+      }
+      
+      this.statusAlert = true;
+      setTimeout(()=> {
+        this.statusAlert = false;
+      }, 2500);
+    },
+
       save() {
       if (this.editedIndex > -1) {
-        console.log(this.editedItem.id);
-        this.editClassroom();
-        Object.assign(this.classroom[this.editedIndex], this.editedItem);
+        this.editCareer();
+        Object.assign(this.career[this.editedIndex], this.editedItem);
       } else {
-        this.saveClassroom();
+        this.saveCareer();
       }
       this.close();
     },
     
+    async saveCareer() {
+      await this.axios
+        .post("apiv1/carrera", this.editedItem)
+        .then((response) => {
+          this.editedItem = response.data;
+          this.career.push(this.editedItem);
+          this.shootAlert(response.config.method);
+        })
+        .catch((e) => {
+          this.errors = e;
+        });
+    },
+
+    async editCareer() {
+      await this.axios
+        .put("apiv1/carrera/" + this.editedItem.id, this.editedItem)
+        .then((response) => {
+          this.shootAlert(response.config.method);
+          
+        })
+        .catch((e) => {
+          this.errors = e;
+        });
+    },
+    
+    async deleteCareer() {
+      
+      await this.axios.delete("apiv1/carrera/" + this.editedItem.id)
+      .then((response) => {
+        this.shootAlert(response.config.method);
+      })
+      .catch((e) => {
+        this.errors = e;
+      });
+    },
+
+    
+
     },
     //termino methods
   }

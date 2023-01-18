@@ -4,16 +4,19 @@
           <v-app-bar
             app
             elevation="4"
+            class="secondary"
             >
-            <v-app-bar-nav-icon @click="mostrarMenu=!mostrarMenu"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click="mostrarMenu=!mostrarMenu" color="white"></v-app-bar-nav-icon>
             <v-app-bar-title
-            color-text="white"
+            class="white--text"
             >Sistema de Reserva de Aulas CURZA</v-app-bar-title>
             <v-spacer></v-spacer>
             <v-btn small text fab>
-                <v-icon>mdi-cog-outline</v-icon>
+                <v-icon color="white">mdi-cog-outline</v-icon>
             </v-btn>
-            <v-btn small @click="logout">
+            <v-btn small @click="logout"
+                class="success"
+            >
                 <v-icon>mdi-exit-to-app</v-icon>
             </v-btn>
 
@@ -23,8 +26,9 @@
             app
             v-model="mostrarMenu"
             temporary
+            class="success"
         >
-            <v-list-item>
+            <v-list-item class="primary white--text">
                 <v-img
                     alt="Reserva Aulas Logo"
                     class="shrink mr-2"
@@ -37,7 +41,7 @@
                     <v-list-item-title class="text-h6">
                         SiReC
                     </v-list-item-title>
-                    <v-list-item-subtitle>
+                    <v-list-item-subtitle class="white--text">
                         Proyecto Final
                     </v-list-item-subtitle>
                 </v-list-item-content>
@@ -49,11 +53,16 @@
                     :key="item.title"
                     :to="item.to"
                     link
+                    
                 >
-                    <v-list-item-icon>
+                    <v-list-item-icon
+                        class="white--"
+                    >
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
-                    <v-list-item-content>
+                    <v-list-item-content
+                        class="white--text"
+                    >
                         <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>

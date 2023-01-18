@@ -2,9 +2,8 @@
     <v-data-table
       :headers="headers"
       :items="classroom"
-      class="elevation-1"
+      class="elevation-1 mx-15 "
       :loading =  "loading"
-      loading-text="Loading... Please wait"
     >
     <template v-slot:[`item.es_climatizada`]="{ item }">
       <v-chip
@@ -17,13 +16,13 @@
 
       <template v-slot:top>
         <v-toolbar
+          class="pb-3 primary elevation-4"
           flat
-          class="pb-3 primary"
         >
           <v-app-bar-nav-icon>
             <v-icon color="white">mdi-google-classroom</v-icon>
           </v-app-bar-nav-icon>
-          <v-toolbar-title color="white--text">Gestionar Aulas</v-toolbar-title>
+          <v-toolbar-title class="white--text">Gestionar Aulas</v-toolbar-title>
           <v-divider
             class="mx-4 white"
             inset
