@@ -72,6 +72,7 @@
                       <v-text-field
                         v-model="editedItem.mostrar"
                         label="mostrar"
+                        disabled
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -192,7 +193,7 @@ export default {
     editedItem: {
       nombre: "",
       apellido: "",
-      mostrar: "",
+     
     },
     defaultItem: {
       nombre: "",
@@ -214,6 +215,13 @@ export default {
     },
     dialogDelete(val) {
       val || this.closeDelete();
+    },
+    editedItem:
+    {
+      handler(){
+        this.editedItem.mostrar = this.editedItem.nombre + " " + this.editedItem.apellido;
+      },
+      deep: true
     },
   },
 
@@ -246,7 +254,6 @@ export default {
       this.editedIndex = this.professor.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
-
     },
 
     deleteItem(item) {

@@ -10,8 +10,8 @@ class Materia extends \app\models\Materia
             'id',
             'nombre',
             'cant_alumnos',
-            'id_carrera',
-            'id_profesor'
+            'id_carrera', => 'carrera'
+            'id_profesor' => 'profesor',
 
         ];
     }
