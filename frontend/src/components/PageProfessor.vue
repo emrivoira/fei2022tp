@@ -218,7 +218,7 @@ export default {
     },
     editedItem:
     {
-      handler(){
+      completarMostrar(){
         this.editedItem.mostrar = this.editedItem.nombre + " " + this.editedItem.apellido;
       },
       deep: true
