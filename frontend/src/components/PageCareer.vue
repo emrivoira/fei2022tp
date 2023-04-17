@@ -27,7 +27,7 @@
           >
             <template v-slot:activator="{ on, attrs }">
               <v-btn
-                color="success"
+                color="secondary white--text"
                 dark
                 class=""
                 v-bind="attrs"

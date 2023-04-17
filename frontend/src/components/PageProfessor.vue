@@ -27,13 +27,13 @@
           >
             <template v-slot:activator="{ on, attrs }">
               <v-btn
-                color="secondary"
+                color="secondary white--text"
                 dark
                 class="mb-2"
                 v-bind="attrs"
                 v-on="on"
               >
-                Agregar aula
+                Agregar Profesor
               </v-btn>
             </template>
             <v-card>
@@ -70,15 +70,15 @@
                       md="4"
                     >
                       <v-text-field
-                        v-model="editedItem.mostrar"
+                        v-model="mostrar"
                         label="mostrar"
                         disabled
-                      ></v-text-field>
+                      >
+                      </v-text-field>
                     </v-col>
                   </v-row>
-                </v-container>
-              </v-card-text>
-  
+                </v-container>            
+              </v-card-text>  
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
@@ -109,7 +109,7 @@
                  mdi-alert
                 </v-icon>
               </v-card-title>
-              <v-card-text class="text-h5 text-center" >¿Esta seguro de borra el profesor: {{  getNameProfessor() }} ?</v-card-text>
+              <v-card-text class="text-h5 text-center" >¿Esta seguro de borra el profesor: {{  editedItem.mostrar }} ?</v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="error" text @click="closeDelete">Cancelar</v-btn>
@@ -175,7 +175,6 @@ export default {
     errors: "",
     typeAlert:"",
     messageAlert:"",
-    nameProfessor:"",
     statusAlert: false,
     headers: [
       {
@@ -193,6 +192,8 @@ export default {
     editedItem: {
       nombre: "",
       apellido: "",
+      mostrar:"",
+      
      
     },
     defaultItem: {
@@ -204,9 +205,21 @@ export default {
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "Nueva Profesor" : "Editar Profesor";
+      return this.editedIndex === -1 ? "Nuevo Profesor" : "Editar Profesor";
     },
-    
+     
+    mostrar:{
+      get(){
+      return this.editedItem.nombre +" "+ this.editedItem.apellido;
+      },
+      set(professor){
+        const name = professor.split(" ")
+        this.editedItem.nombre = name[0]
+        this.editedItem.apellido = name[1]
+
+      }
+    }
+ 
   },
 
   watch: {
@@ -216,13 +229,13 @@ export default {
     dialogDelete(val) {
       val || this.closeDelete();
     },
-    editedItem:
+    /** editedItem:
     {
       completarMostrar(){
         this.editedItem.mostrar = this.editedItem.nombre + " " + this.editedItem.apellido;
       },
       deep: true
-    },
+    },*/
   },
 
   created() {
@@ -262,10 +275,7 @@ export default {
       this.dialogDelete = true;
     },
 
-    getNameProfessor(){
-      this.nameProfessor = this.editedItem.nombre +" "+ this.editedItem.apellido
-      return this.nameProfessor;
-    },
+   
 
     deleteItemConfirm() {
       this.professor.splice(this.editedIndex, 1);
@@ -326,6 +336,7 @@ export default {
     // Se crean metodos para guardar, actualizar y borrar registros.
   
     async saveProfessor() {
+      this.editedItem.mostrar = this.mostrar
       await this.axios
         .post("apiv1/profesor", this.editedItem)
         .then((response) => {
@@ -338,6 +349,7 @@ export default {
         });
     },
     async editProfessor() {
+      this.editedItem.mostrar = this.mostrar
       await this.axios
         .put("apiv1/profesor/" + this.editedItem.id, this.editedItem)
         .then((response) => {

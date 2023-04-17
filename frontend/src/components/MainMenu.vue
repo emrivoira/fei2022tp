@@ -4,9 +4,10 @@
           <v-app-bar
             app
             elevation="4"
-            class="secondary"
+            class="primary"
             >
-            <v-app-bar-nav-icon @click="mostrarMenu=!mostrarMenu" color="white"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click="mostrarMenu=!mostrarMenu" color="white">
+            </v-app-bar-nav-icon>
             <v-app-bar-title
             class="white--text"
             >Sistema de Reserva de Aulas CURZA</v-app-bar-title>
@@ -15,7 +16,7 @@
                 <v-icon color="white">mdi-cog-outline</v-icon>
             </v-btn>
             <v-btn small @click="logout"
-                class="success"
+                class="secondary"
             >
                 <v-icon>mdi-exit-to-app</v-icon>
             </v-btn>
@@ -26,12 +27,12 @@
             app
             v-model="mostrarMenu"
             temporary
-            class="success"
+            class="secondary"
         >
             <v-list-item class="primary white--text">
                 <v-img
                     alt="Reserva Aulas Logo"
-                    class="shrink mr-2"
+                    class="shrink ma-3"
                     contain
                     :src="require('../assets/logo.png')"
                     transition="scale-transition"
@@ -39,11 +40,9 @@
                 ></v-img>
                 <v-list-item-content>
                     <v-list-item-title class="text-h6">
-                        SiReC
+                        SiRAC
                     </v-list-item-title>
-                    <v-list-item-subtitle class="white--text">
-                        Proyecto Final
-                    </v-list-item-subtitle>
+                    
                 </v-list-item-content>
             </v-list-item>
             <v-divider></v-divider>
@@ -56,7 +55,7 @@
                     
                 >
                     <v-list-item-icon
-                        class="white--"
+                        class="--white"
                     >
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
