@@ -239,7 +239,7 @@ export default {
   },
 
   created() {
-    this.getClassroom();
+    this.getProfesor();
   },
 
   mounted() {
@@ -248,7 +248,7 @@ export default {
 
     
   methods: {
-    async getClassroom() {
+    async getProfesor() {
       await this.axios
         .get("apiv1/profesor")
         .then((response) => {

@@ -11,6 +11,7 @@ import PageClassroom from '@/components/PageClassroom'
 import PageCareer from "@/components/PageCareer"
 import PageProfessor from "@/components/PageProfessor"
 import PageMatter from "@/components/PageMatter"
+import PageReservation from "@/components/PageReservation"
 
 //Indicamos que vue va a utilizar la libreria/plugins vue-router
 Vue.use(VueRouter)
@@ -35,6 +36,7 @@ const routes = [
     {path: '/profesores', name: 'PageProfessor', component: PageProfessor },
     {path: '/materias', name:'PageMatter', component: PageMatter},
     {path: '/carreras', name: 'PageCareer', component: PageCareer },
+    {path: '/reservas', name: 'PageReservation', component: PageReservation}
 ]
 
 // Se instancia el objeto vue-router

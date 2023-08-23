@@ -81,6 +81,7 @@
           {title:'Gestión de Carreras', icon: 'mdi-school', to: '/carreras'},
           {title:'Gestión de Profesores', icon: 'mdi-human-male-board', to: '/profesores'},
           {title:'Gestión de Materias', icon: 'mdi-book-open', to: '/materias'},
+          {title:"Gestión de Reservas", icon: 'mdi-ticket-outline', to:'/reservas'},
           {title:'About', icon: 'mdi-information-outline', to: '/about'},
             
           ],
